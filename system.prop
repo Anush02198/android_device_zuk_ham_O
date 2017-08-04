@@ -72,12 +72,11 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15
 
-#VOLTE
- persist.dbg.ims_volte_enable=1
- persist.dbg.volte_avail_ovr=1
- persist.dbg.vt_avail_ovr=0
- persist.data.iwlan.enable=true
- persist.dbg.wfc_avail_ovr=0
- 
+# VoLTE
+persist.dbg.ims_volte_enable=1
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=0
+persist.dbg.wfc_avail_ovr=0
+
  # Sdcardfs
   ro.sys.sdcardfs=true
