@@ -12,7 +12,6 @@ persist.radio.custom_ecc=1
 persist.radio.multisim.config=dsds
 
 #Radio
-rild.libpath= /vendor/ham/proprietary/vendor/lib/libril-qc-qmi-1.so
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
 persist.rild.nitz_long_ons_1=
