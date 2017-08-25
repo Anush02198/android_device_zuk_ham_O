@@ -37,6 +37,10 @@ PRODUCT_PACKAGES += \
     init.spectrum.rc \
     init.spectrum.sh \
     init.recovery.qcom.rc
+    
+# Sensors
+ PRODUCT_PACKAGES += \
+     android.hardware.sensors@1.0-impl
 
 # Emergenry number list
 PRODUCT_PACKAGES += \
@@ -55,8 +59,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
-
+   
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
     audiod \
     audio.a2dp.default \
     audio_amplifier.msm8974 \
@@ -69,6 +75,14 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libtfa98xx \
     tinymix
+
+# Bluetooth
+#PRODUCT_PACKAGES += \
+#    android.hardware.bluetooth@1.0-impl
+
+# Boot animation
+  TARGET_SCREEN_HEIGHT := 1920
+  TARGET_SCREEN_WIDTH := 1080
 
 PRODUCT_PROPERTY_OVERRIDES += \
      use.dedicated.device.for.voip=true \
@@ -112,6 +126,9 @@ PRODUCT_PACKAGES += \
 
 # Graphics
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.composer@2.1-impl \
     copybit.msm8974 \
     gralloc.msm8974 \
     hwcomposer.msm8974 \
@@ -131,6 +148,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl \
     lights.msm8974
 
 # IPC Security config
@@ -164,6 +182,7 @@ PRODUCT_COPY_FILES += \
     
 # Power
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.msm8974
 
 # Keylayouts
@@ -173,6 +192,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Goodix-CTP.kl:system/usr/keylayout/Goodix-CTP.kl \
     $(LOCAL_PATH)/keylayout/fpc1020tp.kl:system/usr/keylayout/fpc1020tp.kl
     $(LOCAL_PATH)/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl:system/usr/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl \
+
+# Keymaster
+ PRODUCT_PACKAGES += \
+     android.hardware.keymaster@3.0-impl
+     
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8974
@@ -180,6 +204,10 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf
+    
+# Vibrator
+ PRODUCT_PACKAGES += \
+     android.hardware.vibrator@1.0-impl    
 
 # USB
 PRODUCT_PACKAGES += \
