@@ -224,6 +224,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
+    wificond \
     libwpa_client \
     hostapd \
     wpa_supplicant \
