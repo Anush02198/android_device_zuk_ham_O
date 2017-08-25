@@ -104,3 +104,7 @@ wifi.supplicant_scan_interval=15
 
  # Sdcardfs
   ro.sys.sdcardfs=true
+  
+# Extras
+ro.min.fling_velocity=140
+ro.max.fling_velocity=20000
