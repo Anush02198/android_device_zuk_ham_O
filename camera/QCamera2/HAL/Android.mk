@@ -1,15 +1,6 @@
 LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
-
-LOCAL_CLANG_CFLAGS += \
-        -Wno-error=unused-private-field \
-        -Wno-error=strlcpy-strlcat-size \
-        -Wno-error=gnu-designator \
-        -Wno-error=unused-variable \
-        -Wno-error=format \
-        -Wno-error=sign-compare
-
 LOCAL_SRC_FILES := \
         QCamera2Factory.cpp \
         QCamera2Hal.cpp \
@@ -27,11 +18,6 @@ LOCAL_SRC_FILES := \
         wrapper/QualcommCamera.cpp
 
 LOCAL_CFLAGS = -Wall -Werror -DDEFAULT_DENOISE_MODE_ON
-
-ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
-LOCAL_CFLAGS += -DUSE_MEDIA_EXTENSIONS
-endif
-
 #Debug logs are enabled
 #LOCAL_CFLAGS += -DDISABLE_DEBUG_LOG
 
@@ -45,8 +31,8 @@ endif
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
         frameworks/native/include/media/openmax \
-        $(call project-path-for,qcom-display)/libgralloc \
-        $(call project-path-for,qcom-media)/libstagefrighthw \
+        hardware/qcom/display-caf/msm8974//libgralloc \
+        hardware/qcom/media-caf/msm8974//libstagefrighthw \
         $(LOCAL_PATH)/../../mm-image-codec/qexif \
         $(LOCAL_PATH)/../../mm-image-codec/qomx_core \
         $(LOCAL_PATH)/../util \
@@ -59,9 +45,7 @@ LOCAL_CFLAGS += -DUSE_KK_CODE
 endif
 
 ifeq ($(TARGET_USE_VENDOR_CAMERA_EXT),true)
-LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/msm8974/libgralloc
-else
-LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/libgralloc
+LOCAL_C_INCLUDES += hardware/qcom/display-caf/msm8974//libgralloc
 endif
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
@@ -72,6 +56,7 @@ LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
+LOCAL_CLANG := false
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
