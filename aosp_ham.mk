@@ -1,4 +1,5 @@
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,20 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-
-# Provide meaningful APN configuration
-PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
-
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from ham device
 $(call inherit-product, device/zuk/ham/ham.mk)
 
-PRODUCT_NAME := aosp_ham
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+PRODUCT_NAME := lineage_ham
 PRODUCT_DEVICE := ham
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_MODEL := ZUK Z1
@@ -41,18 +38,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=Z1 PRODUCT_NAME=ham
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="ZUK/ham/Z1:5.1.1/LMY49J/YOG4PAS9IG:user/release-keys" \
     PRIVATE_BUILD_DESC="ham-user 5.1.1 LMY49J YOG4PAS9IG release-keys"
-# AOSP packages
-PRODUCT_PACKAGES += \
-    Launcher3 \
-    messaging \
-    SoundRecorder \
-    Terminal \
-    WallpaperPicker
-
-# AOSP properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.setupwizard.rotation_locked=true \
-    ro.storage_manager.enabled=true
 # HIDL
  PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
